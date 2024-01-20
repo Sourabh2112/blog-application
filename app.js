@@ -4,15 +4,21 @@ import userouter from "./routes/user-routes.js";
 import blogrouter from "./routes/blog-routes.js";
 import cookieParser from "cookie-parser";
 import { checkAuth } from "./middleware/auth.js";
+import staticroute from"./routes/staticroute";
+import path from "path";
 
 
+// mongoose.set("strictQuery", true);
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use("/api", (req, res, next) => {
-//   res.send("hello sourabh");
-// }); 
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"));
+
+
+app.use("/", staticroute);
 app.use("/api/user", userouter);
 app.use("/api/blog",checkAuth, blogrouter);
 

@@ -4,7 +4,7 @@ import { setUser } from "../service/auth";
 
 //USER DATA
 
-export const getAlluser = async (req, res, next) => {
+export const getAlluser = async (req, res) => {
   let users;
   try {
     users = await User.find();
@@ -19,7 +19,7 @@ export const getAlluser = async (req, res, next) => {
 
 //SIGN-UP
 
-export const signup = async (req, res, next) => {
+export const signup = async (req, res) => {
   const { name, email, password } = req.body;
   let existingUser;
   try {
@@ -46,7 +46,7 @@ export const signup = async (req, res, next) => {
   } catch (err) {
     return console.log(err);
   }
-  return res.status(201).json({ user });
+  return res.status(201).json({ User });
 };
 
 // LOGIN
