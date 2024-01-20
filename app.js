@@ -2,9 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import userouter from "./routes/user-routes.js";
 import blogrouter from "./routes/blog-routes.js";
+import cookieParser from "cookie-parser";
+
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+
 // app.use("/api", (req, res, next) => {
 //   res.send("hello sourabh");
 // }); 

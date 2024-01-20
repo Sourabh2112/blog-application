@@ -1,5 +1,6 @@
 import User from "../model/user";
 import bcrypt from "bcryptjs";
+import { setUser } from "../service/auth";
 
 //USER DATA
 
@@ -37,7 +38,7 @@ export const signup = async (req, res, next) => {
     name,
     email,
     password: hashedpassword,
-    blogs:[],
+    blogs: [],
   });
 
   try {
@@ -65,5 +66,13 @@ export const login = async (req, res, next) => {
   if (!iscorrectpassword) {
     return res.status(400).json({ message: "Incorrect pasword" });
   }
+
+  const token = setUser(existingUser);
+  res.cookie("uid", token);
   return res.status(200).json({ message: "Login Successfull:)" });
+};
+
+export const logout = async (req, res) => {
+  res.clearCookie("uid").status(204).json({ msg: "logout successfull" });
+  // await req.user.save();
 };
