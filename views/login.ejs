@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <title>Login</title>
+    <style>
+        /* Your existing CSS styles */
+
+        /* New styles for form */
+        .login-form {
+            max-width: 500px;
+            margin: 150px 650px;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"],
+        .login-form button[type="submit"] {
+            padding: 8px;
+            width: calc(100% - 16px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .login-form button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-form">
+        <h2>LogIn</h2>
+        <form method="POST" action="api/user/login">
+            <label for="email">Email</label>
+            <input type="text" id="email" required name="email" placeholder="Enter your email"/>
+
+            <label for="password">Password</label>
+            <input type="text" id="password" required name="password" placeholder="Enter your password"/>
+
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+
+</html>

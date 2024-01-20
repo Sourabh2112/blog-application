@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
 
 // LOGIN
 
-export const login = async (req, res, next) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
   let existingUser;
   try {
