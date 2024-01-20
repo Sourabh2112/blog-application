@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import userouter from "./routes/user-routes.js";
 import blogrouter from "./routes/blog-routes.js";
 import cookieParser from "cookie-parser";
+import { checkAuth } from "./middleware/auth.js";
 
 
 const app = express();
@@ -13,7 +14,7 @@ app.use(cookieParser());
 //   res.send("hello sourabh");
 // }); 
 app.use("/api/user", userouter);
-app.use("/api/blog", blogrouter);
+app.use("/api/blog",checkAuth, blogrouter);
 
 mongoose
   .connect(
