@@ -28,9 +28,7 @@ export const signup = async (req, res) => {
     return console.log(err);
   }
   if (existingUser) {
-    return res
-      .status(400)
-      .redirect("/login");
+    return res.status(400).redirect("/login");
   }
   const hashedpassword = bcrypt.hashSync(password);
 
@@ -50,7 +48,6 @@ export const signup = async (req, res) => {
 };
 
 // LOGIN
-
 export const login = async (req, res) => {
   const { email, password } = req.body;
   let existingUser;
@@ -74,6 +71,7 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.clearCookie("uid").status(204).json({ msg: "logout successfull" });
+  res.clearCookie("uid").status(204);
+  return res.redirect("/login");
   // await req.user.save();
 };

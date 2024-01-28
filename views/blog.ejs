@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLOG</title>
+    <!-- <link href="navbar.css" rel="stylesheet"> -->
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
@@ -113,17 +114,75 @@
         .user__info>small {
             color: #666;
         }
+
+        body {
+            margin: 0px;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #5f6e99;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            width: 100%;
+            /* Set the width to 100% */
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .create-blog {
+            background-color: #3f5ee6;
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            background-color: #d9534f;
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <h1>WELCOME</h1>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="/addBlog" class="create-blog" id="createBlogLink">Create</a>
+        </div>
+        <div class="navbar-right">
+            <a href="/blog" class="user-option">User</a>
+            <form method="POST" action="/api/user/logout">
+                <button class="logout-btn" id="logoutBtn">Log Out</button>
+            </form>
+        </div>
+    </div>
     <div class="container">
         <% if (blogs && blogs.length> 0) { %>
             <% blogs.forEach((blog, index)=> { %>
                 <div class="card">
                     <div class="card__header">
-                        <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image"
+                        <img src="https://source.unsplash.com/600x400/?computer" alt="card_image" class="card_image"
                             width="600">
                     </div>
                     <div class="card__body">
@@ -137,7 +196,7 @@
                     </div>
                     <div class="card__footer">
                         <div class="user">
-                            <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+                            <img src="https://i.pravatar.cc/40?img=1" alt="user_image" class="user_image">
                             <div class="user__info">
                                 <h5>
                                     <%= blog.user %>
@@ -152,6 +211,18 @@
                         <p>No blogs available.</p>
                         <% } %>
     </div>
+    <!-- <script>
+        document.getElementById('createBlogLink').addEventListener('click', function () {
+            alert('Rendering Create Blog Page');
+            return res.render("/addBlog");
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            alert('Logging Out');
+            res.clearCookie("uid").status(204).json({ msg: "logout successfull" });
+            return res.redirect("/login")
+        });
+    </script> -->
 </body>
 
 </html>
