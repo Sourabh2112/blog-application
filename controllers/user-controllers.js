@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
   if (existingUser) {
     return res
       .status(400)
-      .json({ message: "user already exit! Login instead" });
+      .redirect("/login");
   }
   const hashedpassword = bcrypt.hashSync(password);
 
@@ -46,7 +46,7 @@ export const signup = async (req, res) => {
   } catch (err) {
     return console.log(err);
   }
-  return res.status(201).json({ User });
+  return res.status(201).redirect("/login");
 };
 
 // LOGIN
@@ -60,16 +60,17 @@ export const login = async (req, res) => {
     return console.log(err);
   }
   if (!existingUser) {
-    return res.status(404).json({ message: "User not found!! Please signup" });
+    return res.status(404).redirect("/login");
   }
   const iscorrectpassword = bcrypt.compareSync(password, existingUser.password);
   if (!iscorrectpassword) {
-    return res.status(400).json({ message: "Incorrect pasword" });
+    return res.status(400).redirect("/login");
   }
 
   const token = setUser(existingUser);
   res.cookie("uid", token);
-  return res.status(200).json({ message: "Login Successfull:)" });
+  // res.send("login successfully")
+  return res.status(200).redirect("/blog");
 };
 
 export const logout = async (req, res) => {

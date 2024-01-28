@@ -8,6 +8,16 @@
         /* Your existing CSS styles */
 
         /* New styles for form */
+
+        body {
+            font-family: "Quicksand", sans-serif;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            background: #7f7fd5;
+            background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+        }
+
         .login-form {
             max-width: 500px;
             margin: 150px 650px;
@@ -52,10 +62,10 @@
         <h2>LogIn</h2>
         <form method="POST" action="api/user/login">
             <label for="email">Email</label>
-            <input type="text" id="email" required name="email" placeholder="Enter your email"/>
+            <input type="text" id="email" required name="email" placeholder="Enter your email" />
 
             <label for="password">Password</label>
-            <input type="text" id="password" required name="password" placeholder="Enter your password"/>
+            <input type="text" id="password" required name="password" placeholder="Enter your password" />
 
             <button type="submit">Log In</button>
         </form>
