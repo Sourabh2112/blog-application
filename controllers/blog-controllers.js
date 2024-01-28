@@ -47,7 +47,7 @@ export const addBlog = async (req, res, next) => {
   // } catch (err) {
   //   return res.status(500).json(err);
   // }
-  return res.status(200).json({ blog });
+  return res.status(200).redirect("/blog");
 };
 
 //Update Blogs

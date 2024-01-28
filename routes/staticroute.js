@@ -3,7 +3,6 @@ import { checkAuth } from "../middleware/auth";
 
 const router = express.Router();
 import Blog from "../model/Blog";
-import User from "../model/user";
 
 router.get("/blog", checkAuth, async (req, res) => {
   if (!req.user) return res.redirect("/login");
@@ -12,6 +11,10 @@ router.get("/blog", checkAuth, async (req, res) => {
   return res.render("blog", {
     blogs: allblogs,
   });
+});
+
+router.get("/addBlog", (req, res) => {
+  return res.render("addBlog");
 });
 
 router.get("/signup", (req, res) => {
