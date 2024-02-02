@@ -14,7 +14,7 @@
             display: grid;
             place-items: center;
             height: 100vh;
-            background: #7f7fd5;
+            background: #303097;
             background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
         }
 
@@ -22,7 +22,7 @@
             max-width: 500px;
             margin: 150px 650px;
             padding: 40px;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -50,6 +50,7 @@
         }
 
         .login-form button[type="submit"] {
+            width: 100%;
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
@@ -59,7 +60,7 @@
 
 <body>
     <div class="login-form">
-        <h2>LogIn</h2>
+        <h2><u>LogIn</u></h2>
         <form method="POST" action="api/user/login">
             <label for="email">Email</label>
             <input type="text" id="email" required name="email" placeholder="Enter your email" />

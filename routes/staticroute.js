@@ -1,5 +1,6 @@
 import express from "express";
 import { checkAuth } from "../middleware/auth";
+import { getUser } from "../service/auth";
 
 const router = express.Router();
 import Blog from "../model/Blog";
@@ -15,6 +16,18 @@ router.get("/blog", checkAuth, async (req, res) => {
 
 router.get("/addBlog", (req, res) => {
   return res.render("addBlog");
+});
+
+router.get("/user", async (req, res) => {
+  const id = req.cookies?.uid;
+  const user = getUser(id);
+  const userblogs = await Blog.find({ user: user._id });
+  return res.render(
+    "user",
+    {
+      blogs: userblogs,
+    }
+  );
 });
 
 router.get("/signup", (req, res) => {
